@@ -9,6 +9,7 @@ COPY pnpm-lock.yaml .
 RUN pnpm fetch
 
 COPY . .
+RUN [ ! -e .env ] && cp .env.example .env || echo ".env Datei existiert bereits"
 RUN pnpm install -f --offline
 
 
